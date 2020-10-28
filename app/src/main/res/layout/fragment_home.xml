@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.home.HomeFragment">
+
+        <TextView
+            android:id="@+id/tvHello"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:fontFamily="@font/montserat_regular"
+            android:includeFontPadding="false"
+            android:text="@string/hello_hannah"
+            android:textColor="@color/colorSoftDark"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTripAja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:fontFamily="@font/gilroy_bold"
+            android:includeFontPadding="false"
+            android:text="@string/let_s_explore_indonesia"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_18ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHello" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:contentDescription="@string/app_name"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_notifications_round"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTripAja"
+            app:layout_constraintEnd_toEndOf="@id/edtSearch"
+            app:layout_constraintTop_toTopOf="@+id/tvHello"
+            app:tint="@color/colorSoftDark" />
+
+        <TextView
+            android:id="@+id/edtSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@drawable/bg_search"
+            android:fontFamily="@font/montserat_regular"
+            android:includeFontPadding="false"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/search_hint"
+            android:textColor="@color/colorSearch"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgSearch"
+            app:layout_constraintTop_toBottomOf="@+id/tvTripAja" />
+
+        <ImageView
+            android:id="@+id/imgSearch"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_search_alt"
+            app:layout_constraintBottom_toBottomOf="@+id/edtSearch"
+            app:layout_constraintEnd_toEndOf="@id/edtSearch"
+            app:layout_constraintTop_toTopOf="@+id/edtSearch"
+            app:tint="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/tvPopular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:fontFamily="@font/gilroy_bold"
+            android:includeFontPadding="false"
+            android:text="@string/popular_experiences"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtSearch" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPostPopular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingHorizontal="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPopular" />
+
+        <TextView
+            android:id="@+id/tvFeatured"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:fontFamily="@font/gilroy_bold"
+            android:includeFontPadding="false"
+            android:text="@string/featured"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvPostPopular" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPostFeatured"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingHorizontal="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFeatured" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
