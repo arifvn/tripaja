@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "252030935357",
+    "firebase_url": "https://tripaja-f40a1.firebaseio.com",
+    "project_id": "tripaja-f40a1",
+    "storage_bucket": "tripaja-f40a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252030935357:android:9159d16eafebb51f47e554",
+        "android_client_info": {
+          "package_name": "com.squareit.tripaja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252030935357-kh0afgisfc5jq959927fdssm05vl2fgo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7DDAn-HBq8VR_WcPoUN8rtQF45XVX7Vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252030935357-kh0afgisfc5jq959927fdssm05vl2fgo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
