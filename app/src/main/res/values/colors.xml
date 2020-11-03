@@ -10,6 +10,7 @@
     <color name="colorBlack">#FF000000</color>
     <color name="colorWhite">#FFFFFFFF</color>
     <color name="colorWhiteGrey">#F8F5F5</color>
+    <color name="colorGrey">#959595</color>
     <color name="colorDarkBlue">#348D8E</color>
     <color name="colorBlue">#4081EC</color>
     <color name="colorFavorite">#FB6A67</color>

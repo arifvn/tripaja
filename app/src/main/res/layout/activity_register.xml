@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_12sdp"
-        android:layout_marginBottom="@dimen/_28sdp"
+        android:layout_marginBottom="@dimen/_42sdp"
         android:ellipsize="end"
         android:fontFamily="@font/gilroy_regular"
         android:gravity="center_vertical"
@@ -41,14 +41,14 @@
         android:textAlignment="center"
         android:textColor="@color/colorSoftDark"
         android:textSize="@dimen/_14ssp"
-        app:layout_constraintBottom_toTopOf="@+id/edtUsername"
+        app:layout_constraintBottom_toTopOf="@+id/edtEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="RtlCompat" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnRegister"
         android:layout_width="@dimen/_220sdp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserat_bold"
@@ -59,27 +59,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtConfirmPassword" />
-
-    <EditText
-        android:id="@+id/edtUsername"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_12sdp"
-        android:drawableStart="@drawable/ic_user_square"
-        android:drawablePadding="@dimen/_8sdp"
-        android:fontFamily="@font/gilroy_bold"
-        android:hint="@string/username"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingVertical="@dimen/_8sdp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/_14ssp"
-        app:drawableTint="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/edtEmail"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/edtEmail"
@@ -97,9 +76,10 @@
         android:textSize="@dimen/_14ssp"
         app:drawableTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/edtPassword"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@+id/edtUsername" />
+        app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+        app:layout_constraintStart_toStartOf="@+id/btnRegister"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/edtPassword"
@@ -117,8 +97,8 @@
         android:textSize="@dimen/_14ssp"
         app:drawableTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/edtConfirmPassword"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+        app:layout_constraintStart_toStartOf="@+id/btnRegister"
         app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
 
     <EditText
@@ -136,9 +116,9 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/_14ssp"
         app:drawableTint="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+        app:layout_constraintStart_toStartOf="@+id/btnRegister"
         app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
     <TextView
@@ -161,7 +141,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
         tools:ignore="RtlCompat" />
 
     <TextView
@@ -185,7 +165,7 @@
         tools:ignore="RtlCompat" />
 
     <Button
-        android:id="@+id/btnGoogleLogin"
+        android:id="@+id/btnGoogleRegister"
         android:layout_width="@dimen/_220sdp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_26sdp"
@@ -200,5 +180,24 @@
         app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCaptionTwo" />
+
+    <RelativeLayout
+        android:id="@+id/progressBarRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_add"
+        android:padding="@dimen/_5sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
