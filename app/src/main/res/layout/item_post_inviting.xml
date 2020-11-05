@@ -7,7 +7,7 @@
     android:paddingBottom="@dimen/_12sdp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/ivProfile"
+        android:id="@+id/ivIcon"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginStart="@dimen/_8sdp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvUsername"
+        android:id="@+id/tvPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_8sdp"
@@ -30,13 +30,13 @@
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/_12ssp"
-        app:layout_constraintBottom_toTopOf="@+id/tvDate"
-        app:layout_constraintStart_toEndOf="@id/ivProfile"
-        app:layout_constraintTop_toTopOf="@+id/ivProfile"
+        app:layout_constraintBottom_toTopOf="@+id/tvPlaceAddress"
+        app:layout_constraintStart_toEndOf="@id/ivIcon"
+        app:layout_constraintTop_toTopOf="@+id/ivIcon"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/tvDate"
+        android:id="@+id/tvPlaceAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_4sdp"
@@ -47,9 +47,9 @@
         android:text="@string/thursday_28_october_2020"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/_11ssp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
-        app:layout_constraintStart_toStartOf="@id/tvUsername"
-        app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivIcon"
+        app:layout_constraintStart_toStartOf="@id/tvPlace"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlace" />
 
     <ImageView
         android:id="@+id/ivIconLocation"
@@ -58,13 +58,13 @@
         android:layout_marginTop="@dimen/_4sdp"
         android:padding="@dimen/_6sdp"
         android:src="@drawable/ic_destination"
-        app:layout_constraintEnd_toEndOf="@id/ivProfile"
-        app:layout_constraintStart_toStartOf="@id/ivProfile"
-        app:layout_constraintTop_toBottomOf="@id/ivProfile"
+        app:layout_constraintEnd_toEndOf="@id/ivIcon"
+        app:layout_constraintStart_toStartOf="@id/ivIcon"
+        app:layout_constraintTop_toBottomOf="@id/ivIcon"
         app:tint="@color/colorFavorite" />
 
     <TextView
-        android:id="@+id/tvDestination"
+        android:id="@+id/btnSearchDestination"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_destination"
@@ -78,7 +78,7 @@
         android:textColor="@color/colorFavorite"
         android:textSize="@dimen/_11ssp"
         app:layout_constraintBottom_toBottomOf="@id/ivIconLocation"
-        app:layout_constraintStart_toStartOf="@id/tvDate"
+        app:layout_constraintStart_toStartOf="@id/tvPlaceAddress"
         app:layout_constraintTop_toTopOf="@id/ivIconLocation" />
 
     <ImageView
@@ -88,8 +88,8 @@
         android:layout_marginTop="@dimen/_4sdp"
         android:padding="@dimen/_6sdp"
         android:src="@drawable/ic_calender"
-        app:layout_constraintEnd_toEndOf="@id/ivProfile"
-        app:layout_constraintStart_toStartOf="@id/ivProfile"
+        app:layout_constraintEnd_toEndOf="@id/ivIcon"
+        app:layout_constraintStart_toStartOf="@id/ivIcon"
         app:layout_constraintTop_toBottomOf="@id/ivIconLocation"
         app:tint="@color/colorDarkBlue" />
 
@@ -108,7 +108,7 @@
         android:textColor="@color/colorDarkBlue"
         android:textSize="@dimen/_11ssp"
         app:layout_constraintBottom_toTopOf="@+id/tvDateEnd"
-        app:layout_constraintStart_toStartOf="@id/tvDate"
+        app:layout_constraintStart_toStartOf="@id/tvPlaceAddress"
         app:layout_constraintTop_toTopOf="@+id/ivIconDate"
         app:layout_constraintVertical_chainStyle="packed" />
 

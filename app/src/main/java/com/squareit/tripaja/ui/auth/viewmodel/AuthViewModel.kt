@@ -3,6 +3,7 @@ package com.squareit.tripaja.ui.auth.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.AuthCredential
 import com.squareit.tripaja.data.repository.UserRepository
 import com.squareit.tripaja.utils.Resource
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,7 +13,7 @@ import io.reactivex.schedulers.Schedulers
 class AuthViewModel(private val repository: UserRepository) : ViewModel() {
 
     private val disposables = CompositeDisposable()
-    private val _result = MutableLiveData<Resource<String>>()
+    private var _result = MutableLiveData<Resource<String>>()
     val result: LiveData<Resource<String>> = _result
 
     val authUser by lazy {
@@ -33,10 +34,10 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
         disposables.add(disposable)
     }
 
-    fun register(email: String, password: String) {
+    fun loginWithGoogle(credential: AuthCredential) {
         _result.value = Resource.loading(null)
 
-        val disposable = repository.register(email, password)
+        val disposable = repository.loginWithGoogle(credential)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

@@ -1,32 +1,33 @@
 package com.squareit.tripaja.data.firebase
 
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import io.reactivex.Completable
 
-class FirebaseSource {
+class FirebaseService {
 
     private val firebaseAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
 
     fun login(email: String, password: String) = Completable.create { emitter ->
-        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+        firebaseAuth.signInAnonymously().addOnCompleteListener {
             if (!emitter.isDisposed) {
-                if (it.isSuccessful)
+                if (it.isSuccessful) {
                     emitter.onComplete()
-                else
-                    emitter.onError(it.exception!!)
+                } else emitter.onError(it.exception!!)
             }
         }
     }
 
-    fun register(email: String, password: String) = Completable.create { emitter ->
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+    fun loginWithGoogle(credentials: AuthCredential) = Completable.create { emitter ->
+
+
+        firebaseAuth.signInWithCredential(credentials).addOnCompleteListener {
             if (!emitter.isDisposed) {
-                if (it.isSuccessful)
+                if (it.isSuccessful) {
                     emitter.onComplete()
-                else
-                    emitter.onError(it.exception!!)
+                } else emitter.onError(it.exception!!)
             }
         }
     }

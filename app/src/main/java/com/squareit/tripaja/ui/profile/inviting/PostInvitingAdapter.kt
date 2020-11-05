@@ -40,7 +40,7 @@ class PostInvitingAdapter : RecyclerView.Adapter<PostInvitingAdapter.PostViewHol
             Glide.with(item.context)
                 .load(ContextCompat.getDrawable(item.context, R.drawable.ic_user_placeholder))
                 .centerCrop()
-                .into(item.ivProfile)
+                .into(item.ivIcon)
         }
     }
 

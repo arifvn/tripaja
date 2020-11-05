@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/addPostFragment"
-        android:name="com.squareit.tripaja.ui.createpost.AddPostFragment"
+        android:name="com.squareit.tripaja.ui.createpost.CreatePostFragment"
         android:label="fragment_add_post"
         tools:layout="@layout/fragment_create_post" />
     <fragment

@@ -1,11 +1,12 @@
 package com.squareit.tripaja.data.repository
 
-import com.squareit.tripaja.data.firebase.FirebaseSource
+import com.google.firebase.auth.AuthCredential
+import com.squareit.tripaja.data.firebase.FirebaseService
 
-class UserRepository(private val firebase: FirebaseSource) {
+class UserRepository(private val firebase: FirebaseService) {
     fun login(email: String, password: String) = firebase.login(email, password)
 
-    fun register(email: String, password: String) = firebase.register(email, password)
+    fun loginWithGoogle(credential: AuthCredential) = firebase.loginWithGoogle(credential)
 
     fun currentUser() = firebase.currentUser()
 

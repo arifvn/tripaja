@@ -26,13 +26,16 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/colorWhite"
-            app:tabGravity="center"
-            app:tabMode="scrollable"
+            android:background="@drawable/bg_search"
+            app:tabBackground="@drawable/tab_color_selector"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@null"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/colorWhite"
             app:tabTextAppearance="@style/TabText"
-            app:tabTextColor="@color/colorBlack" />
+            app:tabTextColor="@color/colorPrimary" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
