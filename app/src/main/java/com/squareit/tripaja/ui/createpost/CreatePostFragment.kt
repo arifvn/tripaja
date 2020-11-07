@@ -1,6 +1,8 @@
 package com.squareit.tripaja.ui.createpost
 
 import android.annotation.SuppressLint
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,13 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.gms.common.api.Status
-import com.google.android.libraries.places.api.Places
-import com.google.android.libraries.places.api.model.Place
-import com.google.android.libraries.places.widget.AutocompleteSupportFragment
-import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.squareit.tripaja.R
-import com.squareit.tripaja.utils.makeSnackbar
 import com.synnapps.carouselview.ImageListener
 import gun0912.tedimagepicker.builder.TedImagePicker
 import gun0912.tedimagepicker.builder.type.MediaType
@@ -25,6 +21,11 @@ import kotlinx.android.synthetic.main.fragment_create_post.*
 
 class CreatePostFragment : Fragment() {
     private var selectedUriCarousel: List<Uri>? = null
+
+    companion object {
+        private const val SEARCH_RESULT_CODE = 1
+        const val PLACE_RESULT = "place_result"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,40 +37,15 @@ class CreatePostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initPlaceForMaps()
-
         btnAddImage.setOnClickListener {
             initImagePicker()
         }
-    }
 
-    private fun initPlaceForMaps() {
-        if (!Places.isInitialized()) {
-            Places.initialize(requireContext(), getString(R.string.google_maps_key))
+        btnSearchDestination.setOnClickListener {
+            Intent(requireContext(), SearchDestinationActivity::class.java).also {
+                startActivityForResult(it, SEARCH_RESULT_CODE)
+            }
         }
-        Places.createClient(requireContext())
-
-        searchFragment.visibility = View.VISIBLE
-
-        val autocompleteFragment =
-            childFragmentManager.findFragmentById(R.id.autocomplete_fragment) as AutocompleteSupportFragment
-
-        val countryFilter = mutableListOf("ID")
-        autocompleteFragment
-            .setCountries(countryFilter)
-            .setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME))
-
-        autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
-            override fun onPlaceSelected(place: Place) {
-                searchFragment.visibility = View.GONE
-                btnSearchDestination.text = place.name
-            }
-
-            override fun onError(status: Status) {
-                searchFragment.visibility = View.GONE
-                layoutCreatePost.makeSnackbar("Terjadi kesalahan : $status")
-            }
-        })
     }
 
     private fun initImagePicker() {
@@ -101,5 +77,20 @@ class CreatePostFragment : Fragment() {
         }
         imgPostCarousel.setImageListener(imageListener)
         imgPostCarousel.pageCount = size
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == SEARCH_RESULT_CODE) {
+            when (resultCode) {
+                RESULT_OK -> {
+                    data?.let {
+                        val place = data.getStringExtra(PLACE_RESULT)
+                        btnSearchDestination.text = place
+                    }
+                }
+            }
+            return
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
