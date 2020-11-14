@@ -1,51 +1,49 @@
 package com.squareit.tripaja.ui.createpost
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareit.tripaja.R
 import kotlinx.android.synthetic.main.item_place_autocomplete.view.*
 
-class PlaceAutoCompleteAdapter(
-    private val context: Context,
-) : RecyclerView.Adapter<PlaceAutoCompleteAdapter.PlaceViewHolder>() {
+class PlaceAutoCompleteAdapter(private val clickListener: (String) -> Unit) :
+    RecyclerView.Adapter<PlaceAutoCompleteAdapter.PlacesViewHolder>() {
 
-    private var mResultList: ArrayList<PlaceDataModel>? = null
+    inner class PlacesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    fun updateList(newList: ArrayList<PlaceDataModel>) {
-        mResultList = newList
-        notifyDataSetChanged()
+    private val differCallback = object : DiffUtil.ItemCallback<PlaceDataModel>() {
+        override fun areItemsTheSame(oldItem: PlaceDataModel, newItem: PlaceDataModel): Boolean =
+            oldItem.placeName == newItem.placeName
+
+        override fun areContentsTheSame(oldItem: PlaceDataModel, newItem: PlaceDataModel): Boolean =
+            oldItem == newItem
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+    val differ = AsyncListDiffer(this, differCallback)
 
-    ): PlaceViewHolder {
-        val view =
-            LayoutInflater.from(context).inflate(R.layout.item_place_autocomplete, parent, false)
-        return PlaceViewHolder(view)
+    fun submitList(data: MutableList<PlaceDataModel>) {
+        differ.submitList(data)
     }
 
-    override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
-        if (mResultList != null) {
-            holder.bindItem(mResultList!![position])
-        }
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlacesViewHolder =
+        PlacesViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_place_autocomplete, parent, false)
+        )
 
-    override fun getItemCount(): Int {
-        return if (mResultList != null) {
-            mResultList!!.size
-        } else 0
-    }
+    override fun getItemCount(): Int = differ.currentList.size
 
-    class PlaceViewHolder(private var view: View) : RecyclerView.ViewHolder(view) {
-        fun bindItem(placeDataModel: PlaceDataModel) {
-            view.tvPlace.text = placeDataModel.placeName
-            view.tvPlaceAddress.text = placeDataModel.placeDetail
-            view.tvPlaceDistance.text = placeDataModel.placeDistance
+    override fun onBindViewHolder(holder: PlacesViewHolder, position: Int) {
+        val placeDataModel = differ.currentList[position]
+
+        holder.itemView.apply {
+            tvPlace.text = placeDataModel.placeName
+            tvPlaceAddress.text = placeDataModel.placeDetail
+            setOnClickListener { clickListener(placeDataModel.placeName) }
         }
     }
 }
+

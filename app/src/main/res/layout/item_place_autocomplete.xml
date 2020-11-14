@@ -55,29 +55,9 @@
         android:textAlignment="textStart"
         android:textColor="@color/colorSoftDark"
         android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivIcon"
         app:layout_constraintTop_toBottomOf="@+id/tvPlace" />
-
-    <TextView
-        android:id="@+id/tvPlaceDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_6sdp"
-        android:background="@drawable/bg_trip_date"
-        android:ellipsize="end"
-        android:fontFamily="@font/montserat_bold"
-        android:gravity="center"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:paddingHorizontal="@dimen/_12sdp"
-        android:paddingVertical="@dimen/_2sdp"
-        android:text="@string/_1200_m"
-        android:textColor="@color/colorSoftDark"
-        android:textSize="@dimen/_12ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivIcon"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlaceAddress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
