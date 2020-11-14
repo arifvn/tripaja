@@ -12,7 +12,7 @@
         android:background="@drawable/bg_category"
         android:drawablePadding="@dimen/_8sdp"
         android:ellipsize="end"
-        android:fontFamily="@font/montserat_regular"
+        android:fontFamily="@font/gilroy_regular"
         android:gravity="center"
         android:includeFontPadding="false"
         android:maxLines="1"
