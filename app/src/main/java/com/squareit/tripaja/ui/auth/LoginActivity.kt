@@ -2,26 +2,27 @@ package com.squareit.tripaja.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.GoogleAuthProvider
 import com.squareit.tripaja.R
+import com.squareit.tripaja.databinding.ActivityLoginBinding
 import com.squareit.tripaja.ui.auth.viewmodel.AuthViewModel
 import com.squareit.tripaja.ui.auth.viewmodel.AuthViewModelFactory
 import com.squareit.tripaja.utils.Status
+import com.squareit.tripaja.utils.makeSnackbar
 import com.squareit.tripaja.utils.startMainActivity
-import kotlinx.android.synthetic.main.activity_login.*
+import com.squareit.viewbinder.viewBinder
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
-
 
 class LoginActivity : AppCompatActivity(), KodeinAware {
     override val kodein by kodein()
@@ -32,8 +33,7 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
         const val RC_SIGN_IN = 1
     }
 
-    private var googleSignInClient: GoogleSignInClient? = null
-    private lateinit var gso: GoogleSignInOptions
+    private val viewBinding: ActivityLoginBinding by viewBinder()
 
     override fun onStart() {
         super.onStart()
@@ -44,86 +44,87 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-
-        initializeGoogleSignIn()
-        initializeViewModel()
-        initializeButtonsAction()
+        initViewModel()
+        initBtnClickListener()
     }
 
-    private fun initializeGoogleSignIn() {
-        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        googleSignInClient = GoogleSignIn.getClient(this@LoginActivity, gso)
-    }
-
-    private fun initializeViewModel() {
+    private fun initViewModel() {
         authViewModel =
             ViewModelProvider(this@LoginActivity, factory).get(AuthViewModel::class.java)
-        authViewModel.result.observe(this@LoginActivity, {
+        authViewModel.result.observe(this@LoginActivity) {
             when (it.status) {
                 Status.LOADING -> {
-                    progressBarLogin.visibility = View.VISIBLE
+                    viewBinding.progressBarRegister.visibility = View.VISIBLE
                     setViewsEnabled(false)
                 }
                 Status.SUCCESS -> {
-                    progressBarLogin.visibility = View.GONE
+                    viewBinding.progressBarRegister.visibility = View.GONE
                     startMainActivity()
                 }
                 Status.ERROR -> {
-                    Snackbar.make(layoutLogin, it.message!!, Snackbar.LENGTH_SHORT).show()
-                    progressBarLogin.visibility = View.GONE
+                    viewBinding.root.makeSnackbar(it.message!!)
+                    viewBinding.progressBarRegister.visibility = View.GONE
                     setViewsEnabled(true)
                 }
             }
-        })
+        }
     }
 
     private fun setViewsEnabled(isEnabled: Boolean) {
-        edtEmail.isEnabled = isEnabled
-        edtPassword.isEnabled = isEnabled
-        btnLogin.isEnabled = isEnabled
-        btnLoginGoogle.isEnabled = isEnabled
-    }
-
-    private fun initializeButtonsAction() {
-        btnLogin.setOnClickListener {
-            val email = edtEmail.text.toString().trim()
-            val password = edtPassword.text.toString().trim()
-
-            if (email.isEmpty()) {
-                edtEmail.error = "Email tidak boleh kosong"
-                edtEmail.requestFocus()
-                return@setOnClickListener
-            }
-
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                edtEmail.error = "Email tidak valid"
-                edtEmail.requestFocus()
-                return@setOnClickListener
-            }
-
-            if (password.isEmpty() || password.length < 6) {
-                edtPassword.error = "Password minimal 6 karakter"
-                edtPassword.requestFocus()
-                return@setOnClickListener
-            }
-
-            signInWithEmail(email, password)
-        }
-
-        btnLoginGoogle.setOnClickListener {
-            signInWithGoogleAccount()
+        with(viewBinding) {
+            edtEmail.isEnabled = isEnabled
+            edtPassword.isEnabled = isEnabled
+            btnForgotPassword.isEnabled = isEnabled
+            btnLogin.isEnabled = isEnabled
+            btnRegisterGoogle.isEnabled = isEnabled
+            btnToRegister.isEnabled = isEnabled
         }
     }
 
-    private fun signInWithEmail(email: String, password: String) {
+    private fun initBtnClickListener() {
+        with(viewBinding) {
+            btnLogin.setOnClickListener {
+                val email = edtEmail.editText?.text.toString().trim()
+                val password = edtPassword.editText?.text.toString().trim()
+
+                if (email.isEmpty()) {
+                    edtEmail.error = "Email tidak boleh kosong"
+                    edtEmail.requestFocus()
+                    return@setOnClickListener
+                }
+
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    edtEmail.error = "Email tidak valid"
+                    edtEmail.requestFocus()
+                    return@setOnClickListener
+                }
+
+                if (password.isEmpty() || password.length < 6) {
+                    edtPassword.error = "Password minimal 6 karakter"
+                    edtPassword.requestFocus()
+                    return@setOnClickListener
+                }
+
+                loginWithEmail(email, password)
+            }
+
+            btnRegisterGoogle.setOnClickListener {
+                loginWithGoogleAccount()
+            }
+        }
+    }
+
+    private fun loginWithEmail(email: String, password: String) {
         authViewModel.login(email, password)
     }
 
-    private fun signInWithGoogleAccount() {
+    private fun loginWithGoogleAccount() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        val googleSignInClient = GoogleSignIn.getClient(this@LoginActivity, gso)
+
         googleSignInClient!!.signInIntent.also { intent ->
             startActivityForResult(intent, RC_SIGN_IN)
         }
@@ -144,7 +145,8 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
 
                 authViewModel.loginWithGoogle(credential)
             } catch (e: ApiException) {
-                Snackbar.make(layoutLogin, "Login Gagal", Snackbar.LENGTH_SHORT).show()
+                Log.d("TAG", "GAGAL: $e, ${e.message}")
+                viewBinding.root.makeSnackbar("Login Gagal")
             }
         }
     }

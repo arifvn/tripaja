@@ -1,10 +1,10 @@
-package com.squareit.tripaja.data.firebase
+package com.squareit.tripaja.data.repository
 
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import io.reactivex.Completable
 
-class FirebaseService {
+class AuthFirebase {
 
     private val firebaseAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
@@ -21,8 +21,6 @@ class FirebaseService {
     }
 
     fun loginWithGoogle(credentials: AuthCredential) = Completable.create { emitter ->
-
-
         firebaseAuth.signInWithCredential(credentials).addOnCompleteListener {
             if (!emitter.isDisposed) {
                 if (it.isSuccessful) {

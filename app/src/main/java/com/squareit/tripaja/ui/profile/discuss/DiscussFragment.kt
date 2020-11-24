@@ -37,7 +37,7 @@ class DiscussFragment : Fragment() {
             Post("", ""),
             Post("", ""),
             Post("", ""),
-            Post("", ""),
+            Post("", "")
         )
 
         postDiscussAdapter = PostDiscussAdapter()

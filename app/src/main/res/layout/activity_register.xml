@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutRegister"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.auth.RegisterActivity">
+
+    <TextView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_14ssp"
+        android:fontFamily="@font/gilroy_medium"
+        android:text="@string/kembali"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_12ssp"
+        app:drawableStartCompat="@drawable/ic_back"
+        app:drawableTint="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvKelilingIndonesia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/gilroy_bold"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:text="@string/keliling_indonesia"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_20ssp"
+        app:layout_constraintBottom_toTopOf="@+id/tvCaption"
+        app:layout_constraintEnd_toStartOf="@+id/tvTripaja"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvTripaja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:ellipsize="end"
+        android:fontFamily="@font/gilroy_bold"
+        android:includeFontPadding="false"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_20ssp"
+        app:layout_constraintBottom_toBottomOf="@id/tvKelilingIndonesia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvKelilingIndonesia"
+        app:layout_constraintTop_toTopOf="@id/tvKelilingIndonesia" />
+
+    <TextView
+        android:id="@+id/tvCaption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:fontFamily="@font/gilroy_regular"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:text="@string/register_untuk_menggunakan_semua_fitur"
+        android:textColor="@color/colorSoftDark"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintBottom_toTopOf="@+id/edtEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvKelilingIndonesia" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:drawableStart="@drawable/ic_email"
+        android:hint="@string/username"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@id/edtEmail"
+        app:layout_constraintEnd_toEndOf="@id/edtEmail"
+        app:layout_constraintStart_toStartOf="@id/edtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tvCaption"
+        app:startIconDrawable="@drawable/ic_person"
+        app:startIconTint="@color/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:drawableStart="@drawable/ic_email"
+        android:hint="@string/email"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@+id/edtPassword"
+        app:layout_constraintEnd_toEndOf="@id/edtPassword"
+        app:layout_constraintStart_toStartOf="@id/edtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtName"
+        app:startIconDrawable="@drawable/ic_email"
+        app:startIconTint="@color/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:drawableStart="@drawable/ic_email"
+        android:hint="@string/password"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@id/edtConfirmPassword"
+        app:layout_constraintEnd_toEndOf="@id/edtConfirmPassword"
+        app:layout_constraintStart_toStartOf="@id/edtConfirmPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:startIconTint="@color/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtConfirmPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:drawableStart="@drawable/ic_email"
+        android:hint="@string/konfirmasi_password"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="@id/btnRegister"
+        app:layout_constraintStart_toStartOf="@id/btnRegister"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:startIconTint="@color/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/gilroy_regular"
+        android:paddingVertical="@dimen/_8sdp"
+        android:text="@string/register"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toTopOf="@+id/vDivider"
+        app:layout_constraintEnd_toEndOf="@id/vDivider"
+        app:layout_constraintStart_toStartOf="@id/vDivider"
+        app:layout_constraintTop_toBottomOf="@+id/edtConfirmPassword" />
+
+    <View
+        android:id="@+id/vDivider"
+        android:layout_width="320dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@color/colorGrey"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegisterGoogle"
+        app:layout_constraintEnd_toEndOf="@id/btnRegisterGoogle"
+        app:layout_constraintStart_toStartOf="@id/btnRegisterGoogle"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+    <TextView
+        android:id="@+id/tvOr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/gilroy_regular"
+        android:includeFontPadding="false"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:text="@string/atau"
+        android:textColor="@color/colorSoftDark"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintBottom_toBottomOf="@id/vDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/vDivider" />
+
+    <Button
+        android:id="@+id/btnRegisterGoogle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:backgroundTint="@color/colorWhite"
+        android:fontFamily="@font/gilroy_regular"
+        android:paddingVertical="@dimen/_8sdp"
+        android:text="@string/masuk_dengan_google"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_11ssp"
+        app:icon="@drawable/ic_google"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/tvRegisterCaption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vDivider" />
+
+    <TextView
+        android:id="@+id/tvRegisterCaption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:fontFamily="@font/gilroy_regular"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:padding="@dimen/_4sdp"
+        android:text="@string/sudah_punya_akun"
+        android:textColor="@color/colorSoftDark"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnToLogin"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegisterGoogle" />
+
+    <TextView
+        android:id="@+id/btnToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gilroy_bold"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:padding="@dimen/_4sdp"
+        android:text="@string/login"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="@id/tvRegisterCaption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvRegisterCaption"
+        app:layout_constraintTop_toTopOf="@id/tvRegisterCaption" />
+
+    <RelativeLayout
+        android:id="@+id/progressBarRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_add"
+        android:elevation="@dimen/_4sdp"
+        android:padding="@dimen/_8sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

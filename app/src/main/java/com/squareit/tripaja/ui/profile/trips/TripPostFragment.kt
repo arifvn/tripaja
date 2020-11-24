@@ -39,7 +39,7 @@ class TripPostFragment : Fragment() {
             Post("", ""),
             Post("", ""),
             Post("", ""),
-            Post("", ""),
+            Post("", "")
         )
 
         postListAdapter = PostTripsAdapter()

@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.lifecycle.observe
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.navGraphViewModels
@@ -41,16 +42,16 @@ class CreatePostFragment : Fragment() {
 
     private fun initViewModel() {
         with(viewModel) {
-            listUri.observe(viewLifecycleOwner, {
+            listUri.observe(viewLifecycleOwner) {
                 setImagePostCarousel(it.size, it)
                 selectedUriCarousel = it
-            })
-            destination.observe(viewLifecycleOwner, {
+            }
+            destination.observe(viewLifecycleOwner) {
                 btnSearchDestination.text = it
-            })
-            description.observe(viewLifecycleOwner, {
+            }
+            description.observe(viewLifecycleOwner) {
                 edtDescription.setText(it)
-            })
+            }
         }
     }
 

@@ -12,21 +12,19 @@
         android:id="@+id/ivLogo"
         android:layout_width="@dimen/_90sdp"
         android:layout_height="@dimen/_90sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher_foreground"
-        app:layout_constraintBottom_toTopOf="@+id/tvHalo"
-        app:layout_constraintEnd_toEndOf="@+id/edtEmail"
-        app:layout_constraintStart_toStartOf="@+id/edtEmail"
-        app:layout_constraintTop_toBottomOf="@+id/group3" />
+        app:layout_constraintBottom_toTopOf="@+id/tvKelilingIndonesia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/tvHalo"
+        android:id="@+id/tvKelilingIndonesia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
         android:fontFamily="@font/gilroy_bold"
         android:gravity="center_vertical"
         android:includeFontPadding="false"
@@ -34,43 +32,32 @@
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/_20ssp"
         app:layout_constraintBottom_toTopOf="@+id/tvCaption"
-        app:layout_constraintEnd_toStartOf="@+id/tvTripers"
+        app:layout_constraintEnd_toStartOf="@+id/tvTripaja"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
-
     <TextView
-        android:id="@+id/tvTripers"
+        android:id="@+id/tvTripaja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4sdp"
         android:ellipsize="end"
         android:fontFamily="@font/gilroy_bold"
         android:includeFontPadding="false"
         android:text="@string/tripers"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/_20ssp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHalo"
+        app:layout_constraintBottom_toBottomOf="@id/tvKelilingIndonesia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvHalo"
-        app:layout_constraintTop_toTopOf="@+id/tvHalo" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="tvTripers,tvHalo"
-        app:layout_constraintBottom_toTopOf="@+id/ivLogo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintStart_toEndOf="@+id/tvKelilingIndonesia"
+        app:layout_constraintTop_toTopOf="@id/tvKelilingIndonesia" />
 
     <TextView
         android:id="@+id/tvCaption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_12sdp"
-        android:layout_marginBottom="@dimen/_32sdp"
+        android:layout_marginTop="@dimen/_4sdp"
         android:fontFamily="@font/gilroy_regular"
         android:gravity="center_vertical"
         android:includeFontPadding="false"
@@ -78,72 +65,99 @@
         android:textColor="@color/colorSoftDark"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintBottom_toTopOf="@+id/edtEmail"
-        app:layout_constraintEnd_toEndOf="@+id/edtEmail"
-        app:layout_constraintStart_toStartOf="@+id/edtEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvHalo" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvKelilingIndonesia" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtEmail"
-        android:layout_width="308dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_22sdp"
         android:drawableStart="@drawable/ic_email"
-        android:drawablePadding="@dimen/_8sdp"
-        android:fontFamily="@font/gilroy_bold"
         android:hint="@string/email"
-        android:inputType="textEmailAddress"
         android:maxLines="1"
-        android:textColor="@color/colorSoftDark"
-        android:textSize="@dimen/_14ssp"
-        app:drawableTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/edtPassword"
-        app:layout_constraintEnd_toEndOf="@+id/edtPassword"
-        app:layout_constraintStart_toStartOf="@+id/edtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/tvCaption" />
+        app:layout_constraintEnd_toEndOf="@id/edtPassword"
+        app:layout_constraintStart_toStartOf="@id/edtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tvCaption"
+        app:startIconDrawable="@drawable/ic_email"
+        app:startIconTint="@color/colorPrimary">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtPassword"
-        android:layout_width="308dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_12sdp"
-        android:drawableStart="@drawable/ic_lock"
-        android:drawablePadding="@dimen/_8sdp"
-        android:fontFamily="@font/gilroy_bold"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:drawableStart="@drawable/ic_email"
         android:hint="@string/password"
-        android:inputType="textPassword"
         android:maxLines="1"
-        android:paddingVertical="@dimen/_8sdp"
-        android:textColor="@color/colorSoftDark"
-        android:textSize="@dimen/_14ssp"
-        app:drawableTint="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/btnForgotPassword"
+        app:layout_constraintEnd_toEndOf="@id/btnLogin"
+        app:layout_constraintStart_toStartOf="@id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:startIconTint="@color/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/btnForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:fontFamily="@font/gilroy_bold"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:paddingVertical="@dimen/_4sdp"
+        android:text="@string/lupa_password"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_12ssp"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+        app:layout_constraintEnd_toEndOf="@id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="@dimen/_220sdp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:fontFamily="@font/gilroy_bold"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/gilroy_regular"
         android:paddingVertical="@dimen/_8sdp"
         android:text="@string/login"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintBottom_toTopOf="@+id/vDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+        app:layout_constraintEnd_toEndOf="@id/vDivider"
+        app:layout_constraintStart_toStartOf="@id/vDivider"
+        app:layout_constraintTop_toBottomOf="@+id/btnForgotPassword" />
 
     <View
         android:id="@+id/vDivider"
-        android:layout_width="0dp"
+        android:layout_width="320dp"
         android:layout_height="2dp"
-        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:background="@color/colorGrey"
-        app:layout_constraintBottom_toTopOf="@+id/btnLoginGoogle"
-        app:layout_constraintEnd_toEndOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="@id/btnLogin"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegisterGoogle"
+        app:layout_constraintEnd_toEndOf="@id/btnRegisterGoogle"
+        app:layout_constraintStart_toStartOf="@id/btnRegisterGoogle"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <TextView
@@ -159,14 +173,16 @@
         android:textColor="@color/colorSoftDark"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintBottom_toBottomOf="@id/vDivider"
-        app:layout_constraintEnd_toEndOf="@id/vDivider"
-        app:layout_constraintStart_toStartOf="@id/vDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/vDivider" />
 
     <Button
-        android:id="@+id/btnLoginGoogle"
+        android:id="@+id/btnRegisterGoogle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:backgroundTint="@color/colorWhite"
         android:fontFamily="@font/gilroy_regular"
         android:paddingVertical="@dimen/_8sdp"
@@ -176,16 +192,51 @@
         android:textSize="@dimen/_11ssp"
         app:icon="@drawable/ic_google"
         app:iconTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintBottom_toTopOf="@+id/tvRegisterCaption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vDivider" />
 
+    <TextView
+        android:id="@+id/tvRegisterCaption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:fontFamily="@font/gilroy_regular"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:padding="@dimen/_4sdp"
+        android:text="@string/belum_punya_akun"
+        android:textColor="@color/colorSoftDark"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnToRegister"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegisterGoogle" />
+
+    <TextView
+        android:id="@+id/btnToRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gilroy_bold"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:padding="@dimen/_4sdp"
+        android:text="@string/register"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="@id/tvRegisterCaption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvRegisterCaption"
+        app:layout_constraintTop_toTopOf="@id/tvRegisterCaption" />
+
     <RelativeLayout
-        android:id="@+id/progressBarLogin"
+        android:id="@+id/progressBarRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_add"
+        android:elevation="@dimen/_4sdp"
         android:padding="@dimen/_8sdp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

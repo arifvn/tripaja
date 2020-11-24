@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "252030935357-7vi4p84dtmst9srreuu6jlvrb8mmv1jh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.squareit.tripaja",
+            "certificate_hash": "ce7291b4e213703d856581d8215f6a3af0a3d6ae"
+          }
+        },
+        {
           "client_id": "252030935357-kh0afgisfc5jq959927fdssm05vl2fgo.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -28,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "252030935357-kh0afgisfc5jq959927fdssm05vl2fgo.apps.googleusercontent.com",
+              "client_id": "252030935357-apc7qvc2bng2k4rlqa64be2lhsi19pk0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

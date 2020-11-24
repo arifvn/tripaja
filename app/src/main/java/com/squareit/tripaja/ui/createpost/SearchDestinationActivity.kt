@@ -101,7 +101,7 @@ class SearchDestinationActivity : AppCompatActivity() {
                     result.add(
                         PlaceDataModel(
                             prediction.getPrimaryText(null).toString(),
-                            prediction.getSecondaryText(null).toString(),
+                            prediction.getSecondaryText(null).toString()
                         )
                     )
                 }

@@ -37,7 +37,7 @@ class InvitingFragment : Fragment() {
             Post("", ""),
             Post("", ""),
             Post("", ""),
-            Post("", ""),
+            Post("", "")
         )
 
         postInvitingAdapter = PostInvitingAdapter()

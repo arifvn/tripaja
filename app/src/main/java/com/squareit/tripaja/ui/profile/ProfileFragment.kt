@@ -40,7 +40,7 @@ class ProfileFragment : Fragment() {
     private fun setFavouriteTripAdapter() {
         val listFavourite = listOf<FavouriteTrip>(
             FavouriteTrip(null, "Bali"),
-            FavouriteTrip(null, "Dieng"),
+            FavouriteTrip(null, "Dieng")
         )
 
         favouriteListAdapter = FavouriteListAdapter()
@@ -56,7 +56,7 @@ class ProfileFragment : Fragment() {
             CategoryTrip(R.drawable.ic_mountain, "Mountain"),
             CategoryTrip(R.drawable.ic_city, "City"),
             CategoryTrip(R.drawable.ic_culture, "Culture"),
-            CategoryTrip(R.drawable.ic_food, "Culinary"),
+            CategoryTrip(R.drawable.ic_food, "Culinary")
         )
 
         for (category in listCategoryTrip) {
